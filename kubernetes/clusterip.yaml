@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-pky
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-pky
+  template:
+    metadata:
+      labels:
+        app: nginx-pky
+    spec:
+      containers:
+        - name: nginx-pky
+          image: nginx:1.14.2
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-clusterip-pky
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+  selector:
+    app: nginx-pky
+

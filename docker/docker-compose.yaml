@@ -1,0 +1,8 @@
+version: '2'
+services:
+  hello:
+    image: hashicorp/http-echo
+    container_name: echo-container-pky
+    command: ["-text", "pky echo container"]
+    ports:
+      - 5000:5678
